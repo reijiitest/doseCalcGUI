@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class Core extends JFrame implements ActionListener {
@@ -28,14 +29,17 @@ public class Core extends JFrame implements ActionListener {
         JTextField isd = new JTextField();
         isd.setHorizontalAlignment(SwingConstants.CENTER);
         isd.setPreferredSize(new Dimension(150, 20));
+        isd.setInputVerifier(new MyInputVerificator());
 
         JTextField isD = new JTextField();
         isD.setHorizontalAlignment(SwingConstants.CENTER);
         isD.setPreferredSize(new Dimension(150, 20));
+        isD.setInputVerifier(new MyInputVerificator());
 
         JTextField isAB = new JTextField();
         isAB.setHorizontalAlignment(SwingConstants.CENTER);
         isAB.setPreferredSize(new Dimension(150, 20));
+        isAB.setInputVerifier(new MyInputVerificator());
 
         JLabel dpf = new JLabel("Разовая доза");
         dpf.setBackground(Color.lightGray);
@@ -108,3 +112,16 @@ public class Core extends JFrame implements ActionListener {
                 } catch (Exception e) {
                     e.printStackTrace();}});}}
 
+
+    class MyInputVerificator extends InputVerifier {
+
+        @Override
+        public boolean verify(JComponent input) {
+            String doubleNum = ((JTextField) input).getText();
+            try {
+                double val = Double.parseDouble(doubleNum);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }}
