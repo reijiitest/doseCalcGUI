@@ -70,12 +70,15 @@ public class Core extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {if (e.getSource() == button){
                 String isdS = isd.getText();
+                isdS = isdS.replaceAll(",",".");
                 double d = Double.parseDouble(isdS);
                 System.out.println(d);
                 String isDS = isD.getText();
+                isDS = isDS.replaceAll(",",".");
                 double D = Double.parseDouble(isDS);
                 System.out.println(D);
                 String isABS = isAB.getText();
+                isABS = isABS.replaceAll(",",".");
                 double ab = Double.parseDouble(isABS);
                 System.out.println(ab);
                 System.out.printf("%f * ((%f + %f)/(2 + %f))", D, d, ab, ab);
@@ -119,6 +122,7 @@ public class Core extends JFrame implements ActionListener {
         public boolean verify(JComponent input) {
             String doubleNum = ((JTextField) input).getText();
             try {
+                doubleNum = doubleNum.replaceAll(",",".");
                 double val = Double.parseDouble(doubleNum);
                 return true;
             } catch (Exception e) {
