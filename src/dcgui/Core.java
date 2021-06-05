@@ -126,6 +126,16 @@ public class Core extends JFrame implements ActionListener {
                 double val = Double.parseDouble(doubleNum);
                 return true;
             } catch (Exception e) {
+Pop.infoBox("введите число", "ввода");
                 return false;
             }
-        }}
+        }
+        public static class Pop
+        {
+
+            public static void infoBox(String infoMessage, String titleBar)
+            {
+                JOptionPane.showMessageDialog(null, infoMessage, "Ошибка " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+}
