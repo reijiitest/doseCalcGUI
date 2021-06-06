@@ -1,4 +1,4 @@
-package dcgui;
+package EQD2Calculator;
 
 import java.awt.*;
 
@@ -7,5 +7,6 @@ public class Terminal {
         EventQueue.invokeLater(() -> {
             try {
                 new SwingGUI();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 ex.printStackTrace();}});}}

@@ -1,29 +1,29 @@
-package dcgui;
+package EQD2Calculator;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SwingGUI extends JFrame implements ActionListener {
 
-    private JButton button = new JButton("EQD2 =");
+    private static JButton button = new JButton("EQD2 =");
     private JTextField isd = new JTextField();
     private JTextField isD = new JTextField();
     private JTextField isAB = new JTextField();
     private JTextField tfRes = new JTextField(10);
+    String[] ABs = {"Легкое", "Простата", "Кость", "Печень", "Мозг"};
+    private JComboBox ABChoice = new JComboBox(ABs);
 
     public SwingGUI() {
 
-        ListenButton listen = new ListenButton(button, isd, isD, isAB, tfRes);
-        button.addActionListener(listen);
-
+        ImageIcon img = new ImageIcon(getClass().getResource("/EQD2Calculator/radiation.png"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 200);
         setLocation(700, 300);
         setTitle("EQD2 Калькулятор");
-
-        ImageIcon img = new ImageIcon(getClass().getResource("/dcgui/radiation.png"));
+        setVisible(true);
         setIconImage(img.getImage());
 
         JPanel panelUp = new JPanel();
@@ -37,6 +37,11 @@ public class SwingGUI extends JFrame implements ActionListener {
         JPanel panelDown = new JPanel();
         panelDown.setBackground(Color.lightGray);
         add(panelDown, BorderLayout.SOUTH);
+
+        BasicComboBoxRenderer renderer = new BasicComboBoxRenderer();
+        renderer.setPreferredSize(new Dimension (150, 120));
+        ABChoice.setMaximumRowCount(6);
+        ABChoice.setSelectedIndex(0);
 
         isd.setHorizontalAlignment(SwingConstants.CENTER);
         isd.setPreferredSize(new Dimension(150, 20));
@@ -76,12 +81,12 @@ public class SwingGUI extends JFrame implements ActionListener {
         panelUp.add(isAB, BorderLayout.EAST);
         panelMid.add(dpf, BorderLayout.WEST);
         panelMid.add(dpc, BorderLayout.CENTER);
-        panelMid.add(alfaBeta, BorderLayout.EAST);
+        panelMid.add(ABChoice, BorderLayout.EAST);
         panelDown.add(button, BorderLayout.WEST);
         panelDown.add(tfRes, BorderLayout.CENTER);
 
-        setVisible(true);
-
+        ListenButton listen = new ListenButton(button, isd, isD, isAB, tfRes);
+        button.addActionListener(listen);
     }
 
     @Override

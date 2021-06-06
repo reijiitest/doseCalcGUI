@@ -1,4 +1,4 @@
-package dcgui;
+package EQD2Calculator;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,10 +24,14 @@ public class ListenButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        double d = Double.parseDouble(isd.getText().replaceAll(",", "."));
-        double D = Double.parseDouble(isD.getText().replaceAll(",", "."));
-        double ab = Double.parseDouble(isAB.getText().replaceAll(",", "."));
-        tfRes.setText(String.valueOf(df.format(D * ((d + ab) / (2 + ab)))));
-
+        try {
+            double d = Double.parseDouble(isd.getText().replaceAll(",", "."));
+            double D = Double.parseDouble(isD.getText().replaceAll(",", "."));
+            double ab = Double.parseDouble(isAB.getText().replaceAll(",", "."));
+            tfRes.setText(String.valueOf(df.format(D * ((d + ab) / (2 + ab)))));
+        }
+        catch (NumberFormatException ex) {
+            Pop.infoBox("введите *число* в каждое поле", "");
+        }
     }
 }
