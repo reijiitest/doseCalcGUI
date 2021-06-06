@@ -12,6 +12,10 @@ public class SwingGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 200);
         setLocation(700, 300);
+        setTitle("EQD2 Калькулятор");
+
+        ImageIcon img = new ImageIcon(getClass().getResource("/dcgui/radiation.png"));
+        setIconImage(img.getImage());
 
         JPanel panelUp = new JPanel();
         panelUp.setBackground(Color.lightGray);
@@ -99,9 +103,7 @@ public class SwingGUI extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
+    public void actionPerformed(ActionEvent e){}
 }
 
 //class Terminal {
