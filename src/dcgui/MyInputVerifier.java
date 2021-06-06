@@ -11,16 +11,17 @@ public class MyInputVerifier extends InputVerifier {
             doubleNum = doubleNum.replaceAll(",",".");
             Double.parseDouble(doubleNum);
             return true;
-        } catch (Exception e) {
-            Pop.infoBox("введите число", "ввода");
+        } catch (NumberFormatException e) {
+            Pop.infoBox("введите *число* в каждое поле", "");
             return false;
         }
     }
+
     public static class Pop
     {
         public static void infoBox(String infoMessage, String titleBar)
         {
-            JOptionPane.showMessageDialog(null, infoMessage, "Ошибка " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, infoMessage, "Ошибка ввода" + titleBar, JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -22,9 +22,6 @@ public class ListenButton implements ActionListener {
         this.tfRes =tfRes;
     }
 
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         double d = Double.parseDouble(isd.getText().replaceAll(",", "."));

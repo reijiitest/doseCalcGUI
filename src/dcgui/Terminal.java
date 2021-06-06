@@ -7,5 +7,5 @@ public class Terminal {
         EventQueue.invokeLater(() -> {
             try {
                 new SwingGUI();
-            } catch (Exception e) {
-                e.printStackTrace();}});}}
+            } catch (Exception ex) {
+                ex.printStackTrace();}});}}
