@@ -38,22 +38,18 @@ public class SwingGUI extends JFrame implements ActionListener {
         panelDown.setBackground(Color.lightGray);
         add(panelDown, BorderLayout.SOUTH);
 
-        BasicComboBoxRenderer renderer = new BasicComboBoxRenderer();
-        renderer.setPreferredSize(new Dimension (150, 120));
+        ABChoice.setEditable(false);
         ABChoice.setMaximumRowCount(6);
         ABChoice.setSelectedIndex(0);
 
         isd.setHorizontalAlignment(SwingConstants.CENTER);
         isd.setPreferredSize(new Dimension(150, 20));
-        isd.setInputVerifier(new MyInputVerifier());
 
         isD.setHorizontalAlignment(SwingConstants.CENTER);
         isD.setPreferredSize(new Dimension(150, 20));
-        isD.setInputVerifier(new MyInputVerifier());
 
         isAB.setHorizontalAlignment(SwingConstants.CENTER);
         isAB.setPreferredSize(new Dimension(150, 20));
-        isAB.setInputVerifier(new MyInputVerifier());
 
         JLabel dpf = new JLabel("Разовая доза");
         dpf.setBackground(Color.lightGray);
@@ -73,7 +69,6 @@ public class SwingGUI extends JFrame implements ActionListener {
         alfaBeta.setVerticalAlignment(SwingConstants.CENTER);
         alfaBeta.setPreferredSize(new Dimension(150, 20));
 
-        tfRes.setHorizontalAlignment(SwingConstants.CENTER);
         tfRes.setEditable(false);
 
         panelUp.add(isd, BorderLayout.WEST);
@@ -81,12 +76,15 @@ public class SwingGUI extends JFrame implements ActionListener {
         panelUp.add(isAB, BorderLayout.EAST);
         panelMid.add(dpf, BorderLayout.WEST);
         panelMid.add(dpc, BorderLayout.CENTER);
-        panelMid.add(ABChoice, BorderLayout.EAST);
-        panelDown.add(button, BorderLayout.WEST);
+        panelMid.add(alfaBeta, BorderLayout.EAST);
+        panelDown.add(ABChoice, BorderLayout.WEST);
+        panelDown.add(button, BorderLayout.EAST);
         panelDown.add(tfRes, BorderLayout.CENTER);
 
         ListenButton listen = new ListenButton(button, isd, isD, isAB, tfRes);
+        ListenABChoice listen1 = new ListenABChoice(ABChoice, isAB);
         button.addActionListener(listen);
+        ABChoice.addActionListener(listen1);
     }
 
     @Override
